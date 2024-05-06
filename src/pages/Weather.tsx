@@ -13,7 +13,7 @@ export default function Home() {
     try {
       const { data } = await WeatherAPI.getWeather(location);
       setData(data);
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.response.data);
       setData(error.response.data);
     }
