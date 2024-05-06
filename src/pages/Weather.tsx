@@ -125,7 +125,6 @@ export default function Home() {
             onClick={searchLocation}
             color="white"
             className="icon icon__right"
-            size={20}
           />
         </div>
 

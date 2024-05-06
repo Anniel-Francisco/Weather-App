@@ -62,6 +62,7 @@ input {
   cursor: pointer;
   top: 30%;
   right: 10px;
+  font-size: 22px;
   transition: ease-in-out 0.2s all;
 }
 .icon__right:hover {
@@ -115,5 +116,10 @@ input {
 @media (max-width: 768px) {
   .box {
     width: 90%;
+  }
+  .icon__right {
+    top: 25%;
+    right: 10px;
+    font-size: 25px;
   }
 }
