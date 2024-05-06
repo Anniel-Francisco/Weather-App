@@ -6,8 +6,25 @@ import { PiWavesBold } from "react-icons/pi";
 //
 import WeatherAPI from "../api/WeatherAPI";
 import "../styles/weather.css";
+
+interface CurrentWeather {
+  temp_c: number;
+  humidity: number;
+  wind_kph: number;
+}
+
+interface Location {
+  name: string;
+  country: string;
+}
+
+interface WeatherData {
+  current: CurrentWeather;
+  location: Location;
+}
+
 export default function Home() {
-  const [data, setData] = useState<object>({});
+  const [data, setData] = useState<WeatherData | null>(null);
   const [location, setLocation] = useState<string>("");
   const searchLocation = async () => {
     try {
@@ -39,9 +56,9 @@ export default function Home() {
           <img src="/src/assets/weather-image.png" alt="" className="cloud" />
         </div>
         <div>
-          <h2>{data.current?.temp_c}°C</h2>
+          <h2>{data?.current.temp_c}°C</h2>
           <span>
-            {data.location?.name} / {data.location?.country}
+            {data?.location.name} / {data?.location.country}
           </span>
         </div>
 
@@ -51,7 +68,7 @@ export default function Home() {
               <PiWavesBold size={35} />
             </div>
             <div>
-              <span>{data.current?.humidity} %</span>
+              <span>{data?.current.humidity} %</span>
               <span>Humidity</span>
             </div>
           </div>
@@ -60,7 +77,7 @@ export default function Home() {
               <FaWind size={35} />
             </div>
             <div>
-              <span>{data.current?.wind_kph} km/h</span>
+              <span>{data?.current.wind_kph} km/h</span>
               <span>Wind Speed</span>
             </div>
           </div>
@@ -80,6 +97,17 @@ export default function Home() {
       </div>
     );
   };
+  let renderedComponent;
+  if (data === null) {
+    renderedComponent = <DefaultLocation />;
+  } else if (
+    Object.keys(data).length !== 0 &&
+    Object.keys(data)[0] !== "error"
+  ) {
+    renderedComponent = <LocationFound />;
+  } else {
+    renderedComponent = <NoLocationFound />;
+  }
   return (
     <div className="container">
       <h1 className="box">Weather-App</h1>
@@ -89,7 +117,9 @@ export default function Home() {
           <input
             type="text"
             placeholder="Enter Your Location"
-            onInput={(e) => setLocation(e.target?.value)}
+            onInput={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setLocation(e.target.value)
+            }
           ></input>
           <FaSearch
             onClick={searchLocation}
@@ -99,13 +129,7 @@ export default function Home() {
           />
         </div>
 
-        {Object.keys(data).length === 0 ? (
-          <DefaultLocation />
-        ) : Object.keys(data)[0] !== "error" ? (
-          <LocationFound />
-        ) : (
-          <NoLocationFound />
-        )}
+        {renderedComponent}
       </div>
     </div>
   );
