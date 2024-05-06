@@ -1,12 +1,10 @@
-import Weather from './pages/Weather';
-
+import Weather from "./pages/Weather";
 function App() {
-
   return (
     <>
-      <Weather/>
+      <Weather />
     </>
-  )
+  );
 }
 
-export default App
+export default App;

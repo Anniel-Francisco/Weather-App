@@ -10,7 +10,7 @@
   background: linear-gradient(90deg, rgb(160, 231, 253), rgb(50, 122, 255));
 }
 .box {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.3);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   -webkit-backdrop-filter: blur(10px);
@@ -21,6 +21,10 @@
 }
 h1 {
   margin-bottom: 8px;
+}
+h2 {
+  font-size: 35px;
+  text-align: center;
 }
 .form {
   display: flex;
@@ -33,11 +37,12 @@ h1 {
 
 input {
   width: 100%;
-  padding: 10px 25px;
+  padding: 10px 30px;
   background: transparent;
   outline: none;
   border-radius: 5px;
   color: white;
+  font-size: 20px;
   border: 1px solid white;
 }
 ::placeholder {
@@ -50,13 +55,13 @@ input {
   position: absolute;
 }
 .icon__left {
-  top: 10px;
+  top: 25%;
   left: 5px;
 }
 .icon__right {
   cursor: pointer;
+  top: 30%;
   right: 10px;
-  top: 12px;
   transition: ease-in-out 0.2s all;
 }
 .icon__right:hover {
@@ -65,14 +70,12 @@ input {
 .info__weather {
   display: flex;
   align-items: center;
-  flex-grow: 1;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.info__weather div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.info__weather div:first-child {
+  text-align: center;
 }
 
 .info__weather span {
@@ -80,8 +83,35 @@ input {
   font-weight: 600;
 }
 .info__weather img {
-  width: 100%;
+  width: 85%;
 }
+.cloud {
+  width: 60% !important;
+}
+
+.current__weather {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 8px;
+}
+.current__weather > div {
+  display: flex;
+  align-items: center;
+}
+.current__weather > div div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+}
+.current__weather > div div:nth-child(2) span {
+  text-align: center;
+}
+.current__weather > div div:nth-child(2) span:nth-child(2) {
+  font-size: 15px;
+}
+
 @media (max-width: 768px) {
   .box {
     width: 90%;
