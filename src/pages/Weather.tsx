@@ -40,7 +40,7 @@ export default function Home() {
     return (
       <div className="info__weather">
         <div>
-          <img src="/src/assets/findLocation.webp" alt="" />
+          <img src="findLocation.webp" alt="" />
         </div>
         <div>
           <span>Find your location</span>
@@ -53,7 +53,7 @@ export default function Home() {
     return (
       <div className="info__weather">
         <div>
-          <img src="/src/assets/weather-image.png" alt="" className="cloud" />
+          <img src="weather-image.png" alt="" className="cloud" />
         </div>
         <div>
           <h2>{data?.current.temp_c}°C</h2>
@@ -89,7 +89,7 @@ export default function Home() {
     return (
       <div className="info__weather">
         <div>
-          <img src="/src/assets/noLocation.webp" alt="" />
+          <img src="noLocation.webp" alt="" />
         </div>
         <div>
           <span>No location found</span>
