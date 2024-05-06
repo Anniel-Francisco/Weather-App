@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 //
 import { TiLocation } from "react-icons/ti";
 import { FaSearch, FaWind } from "react-icons/fa";
